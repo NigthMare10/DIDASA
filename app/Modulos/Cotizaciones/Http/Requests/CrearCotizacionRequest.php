@@ -19,6 +19,7 @@ class CrearCotizacionRequest extends FormRequest
         $this->merge([
             'vehiculoId' => $this->input('vehiculoId'),
             'items' => is_array($items) ? $items : [],
+            'notas' => $this->filled('notas') ? trim((string) $this->input('notas')) : null,
         ]);
     }
 
@@ -26,13 +27,13 @@ class CrearCotizacionRequest extends FormRequest
     {
         return [
             'vehiculoId' => ['required', 'integer', 'exists:vehiculos,id'],
-            'notas' => ['nullable', 'string', 'max:1000'],
-            'itemsJson' => ['required', 'string'],
+            'notas' => ['nullable', 'string', 'max:800'],
+            'itemsJson' => ['required', 'string', 'max:10000'],
             'items' => ['required', 'array', 'min:1'],
             'items.*.tipoItem' => ['required', 'string', 'in:servicio,paquete,manual'],
             'items.*.servicioId' => ['nullable', 'integer', 'exists:servicios,id'],
             'items.*.paqueteId' => ['nullable', 'integer', 'exists:paquetes,id'],
-            'items.*.descripcion' => ['nullable', 'string', 'max:150'],
+            'items.*.descripcion' => ['nullable', 'string', 'min:3', 'max:150'],
             'items.*.cantidad' => ['required', 'integer', 'min:1', 'max:20'],
             'items.*.precioUnitario' => ['nullable', 'numeric', 'min:0', 'max:999999.99'],
         ];
@@ -41,6 +42,10 @@ class CrearCotizacionRequest extends FormRequest
     public function withValidator(Validator $validator): void
     {
         $validator->after(function (Validator $validator): void {
+            if ($this->user()?->vehiculos()->whereKey($this->integer('vehiculoId'))->doesntExist()) {
+                $validator->errors()->add('vehiculoId', 'El vehiculo seleccionado no pertenece a tu cuenta.');
+            }
+
             foreach ($this->input('items', []) as $indice => $item) {
                 $tipo = $item['tipoItem'] ?? null;
 

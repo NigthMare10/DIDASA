@@ -15,11 +15,15 @@
 - La navbar permanece visible al hacer scroll en `/`, `/servicios`, `/cotizar`, `/agendar`, `/mis-vehiculos`, `/fidelidad`, `/mis-ordenes`, `/mis-cotizaciones`, `/mis-citas` y carnet de salud.
 - `Cotizar` y `Agendar` recuperan su franja azul superior con titulo y subtitulo, alineada a la referencia.
 - La barra superior conserva blur/transparencia real durante el scroll y no tapa incorrectamente el contenido gracias al espaciado superior compensado.
+- `Mis Vehículos` ahora mantiene el mismo patron visual con franja azul superior.
 
 ## Backend
 - Flujos funcionales: registrar vehiculo, crear cotizacion, agendar cita, visualizar ordenes y ver fidelidad.
 - Controladores delgados y validacion en Form Requests.
 - Eventos/listeners funcionando para cotizaciones y citas.
+- Registro invalido falla con errores de validacion y registro valido sigue funcionando.
+- Ownership protegido: usuarios no pueden consultar ni mutar recursos ajenos en carnet, vehiculos, cotizaciones ni listados del portal.
+- Login/registro y endpoints sensibles cuentan con proteccion basica de rate limiting.
 
 ## Base de datos
 - Migraciones consistentes y seeders funcionales.
@@ -34,3 +38,4 @@
 - Documentacion base entregada y changelog actualizado.
 - Build frontend exitoso y validacion de breakpoints ejecutada con navegador automatizado.
 - Validacion automatizada adicional de rutas principales, rutas de historial y ausencia de overflow tras los cambios de navegacion.
+- Suite actual validada con 35 pruebas pasando, incluyendo registro invalido, rate limiting de registro y ownership del portal.

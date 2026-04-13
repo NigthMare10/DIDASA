@@ -1,13 +1,17 @@
 @extends('layouts.portal', ['titulo' => 'Mis Vehiculos - DIDASA'])
 
 @section('contenido')
+    <section class="bloque-hero-pagina">
+        <div class="contenedor-portal">
+            <h1 class="titulo-pagina">Mis Vehículos</h1>
+            <p class="subtitulo-pagina">Gestiona tus vehículos y accede a su carnet de salud.</p>
+        </div>
+    </section>
+
     <section class="py-10 sm:py-12" x-data="{ modalAbierto: {{ $errors->any() ? 'true' : 'false' }} }">
         <div class="contenedor-portal">
             <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-                <div>
-                    <h1 class="text-[44px] font-extrabold tracking-tight text-slate-950 sm:text-[54px] lg:text-[64px]">Mis Vehiculos</h1>
-                    <p class="mt-2 text-[17px] text-didasa-textoSuave sm:text-[18px]">Gestiona tus vehiculos y accede a su carnet de salud.</p>
-                </div>
+                <div class="text-[15px] leading-8 text-didasa-textoSuave">Administra tus vehículos registrados y consulta su historial desde el carnet de salud digital.</div>
                 <button type="button" @click="modalAbierto = true" class="boton-primario h-[54px] min-w-[220px] rounded-[20px] text-[15px] sm:min-w-[250px]">
                     <x-icono nombre="plus" clase="h-5 w-5" />
                     Agregar Vehiculo

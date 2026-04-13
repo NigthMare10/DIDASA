@@ -17,10 +17,17 @@ class CrearCitaRequest extends FormRequest
     {
         return [
             'vehiculoId' => ['required', 'integer', 'exists:vehiculos,id'],
-            'fecha' => ['required', 'date'],
+            'fecha' => ['required', 'date_format:Y-m-d'],
             'hora' => ['required', 'date_format:H:i'],
-            'notas' => ['nullable', 'string', 'max:1000'],
+            'notas' => ['nullable', 'string', 'max:800'],
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'notas' => $this->filled('notas') ? trim((string) $this->input('notas')) : null,
+        ]);
     }
 
     public function withValidator(Validator $validator): void
@@ -28,6 +35,10 @@ class CrearCitaRequest extends FormRequest
         $validator->after(function (Validator $validator): void {
             /** @var DisponibilidadCitasService $servicio */
             $servicio = app(DisponibilidadCitasService::class);
+
+            if ($this->user()?->vehiculos()->whereKey($this->integer('vehiculoId'))->doesntExist()) {
+                $validator->errors()->add('vehiculoId', 'El vehiculo seleccionado no pertenece a tu cuenta.');
+            }
 
             if (! $servicio->fechaEsValida((string) $this->input('fecha'))) {
                 $validator->errors()->add('fecha', 'La fecha seleccionada no esta disponible.');

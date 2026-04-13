@@ -22,3 +22,9 @@
 - Se restauro la franja azul superior en `cotizar` y `agendar`, manteniendo los flujos actuales y sin tocar arquitectura.
 - Se reforzo el comportamiento sticky real de `Resumen` en cotizar y `Resumen de Cita` en agendar con offset compatible con la navbar fija.
 - Se validaron los 8 puntos pedidos, incluyendo ausencia de overflow horizontal, navbar fija en rutas principales y calendario de agenda sin refresh completo.
+- Endurecimiento final backend: se agrego `RegisterRequest` con reglas mas estrictas para nombre, correo, contrasena y confirmacion.
+- Se reforzaron validaciones backend en vehiculos, cotizaciones, citas y perfil, incluyendo sanitizacion basica, formatos y ownership del vehiculo seleccionado.
+- Se aplico ownership check probado para carnet de salud, eliminacion de vehiculos, cambio de estado de cotizaciones e historiales filtrados por usuario.
+- Se agrego rate limiting para registro y recuperacion de contrasena; login mantiene su limitacion propia y los endpoints sensibles de negocio conservan throttle dedicado.
+- Se limpio el proyecto de artefactos internos no funcionales: se eliminaron `.opencode/skills`, el script interno de validacion visual y el log auxiliar del servidor; ademas se agregaron exclusiones especificas al `.gitignore`.
+- Se agrego franja azul superior a `Mis Vehículos` para mantener consistencia visual con el portal.

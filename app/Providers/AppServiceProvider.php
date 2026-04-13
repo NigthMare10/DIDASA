@@ -44,5 +44,13 @@ class AppServiceProvider extends ServiceProvider
         RateLimiter::for('citas', function (Request $request) {
             return Limit::perMinute(6)->by((string) $request->user()?->id ?: $request->ip());
         });
+
+        RateLimiter::for('registro', function (Request $request) {
+            return Limit::perMinute(5)->by((string) $request->ip());
+        });
+
+        RateLimiter::for('password-reset', function (Request $request) {
+            return Limit::perMinute(4)->by((string) $request->ip());
+        });
     }
 }

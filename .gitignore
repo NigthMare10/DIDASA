@@ -24,3 +24,10 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 .herramientas/
+/.opencode/
+/skills/
+/prompts/
+/agents/
+/storage/app/ui-validacion/
+/storage/logs/servidor-ui.log
+/scripts/validar-ui.mjs

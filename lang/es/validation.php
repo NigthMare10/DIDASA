@@ -19,7 +19,9 @@ return [
         'array' => 'El campo :attribute debe contener al menos :min elementos.',
     ],
     'numeric' => 'El campo :attribute debe ser numerico.',
+    'regex' => 'El formato del campo :attribute no es valido.',
     'required' => 'El campo :attribute es obligatorio.',
+    'same' => 'El campo :attribute debe coincidir con :other.',
     'string' => 'El campo :attribute debe ser texto.',
     'unique' => 'El :attribute ya esta registrado.',
 
@@ -27,6 +29,7 @@ return [
         'name' => 'nombre',
         'email' => 'correo electronico',
         'password' => 'contrasena',
+        'password_confirmation' => 'confirmacion de contrasena',
         'marca' => 'marca',
         'modelo' => 'modelo',
         'anio' => 'anio',
