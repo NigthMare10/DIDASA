@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --didasa-rojo: #d90416;
+        --didasa-rojo-oscuro: #b50314;
+        --didasa-tinta: #1a2437;
+        --didasa-fondo: #f6f7f9;
+        --didasa-borde: #d8dee7;
+        --didasa-texto-suave: #5f697a;
+        --didasa-panel: #202b3f;
+        --didasa-panel-suave: #2a3650;
+        --didasa-crema: #fff7ee;
+        --altura-navbar: 96px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        overflow-x: clip;
+    }
+
+    body {
+        @apply bg-didasa-fondo font-sans text-[15px] text-slate-950 antialiased;
+        overflow-x: clip;
+    }
+
+    main {
+        overflow-x: clip;
+    }
+
+    img,
+    svg,
+    video,
+    canvas,
+    iframe {
+        max-width: 100%;
+    }
+}
+
+@layer components {
+    .contenedor-portal {
+        @apply mx-auto w-full max-w-[1264px] px-4 sm:px-5 lg:px-6;
+    }
+
+    .navegacion-item {
+        @apply inline-flex items-center gap-2 rounded-[18px] px-3 py-2.5 text-[14px] font-semibold leading-5 text-slate-800 transition duration-200 hover:bg-white/70 hover:text-slate-950 xl:px-3.5;
+    }
+
+    .navegacion-item-activo {
+        @apply bg-white text-slate-950 shadow-sm;
+    }
+
+    .boton-primario {
+        @apply inline-flex items-center justify-center gap-2 rounded-[18px] bg-didasa-rojo px-5 py-3 text-[14px] font-bold leading-none text-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-didasa-rojoOscuro hover:shadow-md disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0;
+    }
+
+    .boton-secundario {
+        @apply inline-flex items-center justify-center gap-2 rounded-[18px] border border-slate-300 bg-white px-5 py-3 text-[14px] font-bold leading-none text-slate-900 transition duration-200 hover:-translate-y-0.5 hover:border-slate-400 hover:bg-slate-50 hover:shadow-sm;
+    }
+
+    .boton-terciario-oscuro {
+        @apply inline-flex items-center justify-center gap-2 rounded-[18px] border border-white/10 bg-white/10 px-5 py-3 text-[14px] font-bold text-white transition duration-200 hover:bg-white/20;
+    }
+
+    .tarjeta-portal {
+        @apply rounded-[24px] border border-slate-200 bg-white shadow-tarjeta;
+    }
+
+    .tarjeta-hover {
+        @apply transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(20,27,38,0.12)];
+    }
+
+    .hero-oscuro {
+        @apply overflow-hidden rounded-[30px] bg-[#1b2538] text-white shadow-tarjeta;
+        background-image: radial-gradient(circle at 72% 42%, rgba(255, 255, 255, 0.06), transparent 28%), linear-gradient(135deg, #1b2538 0%, #202d45 100%);
+    }
+
+    .bloque-hero-pagina {
+        @apply bg-[#1b2538] py-12 text-white sm:py-14;
+    }
+
+    .input-portal,
+    .select-portal,
+    .textarea-portal {
+        @apply w-full rounded-[18px] border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-didasa-rojo focus:ring-2 focus:ring-[rgba(217,4,22,0.12)];
+    }
+
+    .titulo-pagina {
+        @apply text-[38px] font-extrabold tracking-tight text-white sm:text-[46px] lg:text-[54px];
+    }
+
+    .subtitulo-pagina {
+        @apply mt-3 max-w-3xl text-[17px] text-slate-300 sm:text-[18px];
+    }
+
+    .titulo-seccion-clara {
+        @apply text-[34px] font-extrabold tracking-tight text-slate-950 sm:text-[42px] lg:text-[48px];
+    }
+
+    .texto-apoyo-grande {
+        @apply text-[16px] leading-8 text-didasa-textoSuave sm:text-[18px];
+    }
+
+    .estado-vacio {
+        @apply flex min-h-[320px] flex-col items-center justify-center rounded-[26px] border border-dashed border-slate-300 bg-white px-6 text-center shadow-sm;
+    }
+
+    .badge-nivel {
+        @apply inline-flex items-center rounded-full bg-didasa-rojo px-3.5 py-1.5 text-[12px] font-bold text-white;
+    }
+
+    .categoria-servicio-link {
+        @apply inline-flex items-center gap-3 rounded-[18px] px-2 py-2 text-[15px] font-medium text-slate-600 transition duration-200 hover:text-didasa-rojo;
+    }
+
+    .categoria-servicio-link svg {
+        @apply transition duration-200;
+    }
+
+    .categoria-servicio-link:hover svg {
+        color: var(--didasa-rojo);
+    }
+
+    .linea-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}
